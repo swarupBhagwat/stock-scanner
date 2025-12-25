@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "label": "All NSE",
+    "type": "symbols"
+  },
+  "NIFTY50": {
+    "label": "Nifty 50",
+    "type": "index",
+    "index_name": "NIFTY50"
+  },
+  "NIFTY100": {
+    "label": "Nifty 100",
+    "type": "index",
+    "index_name": "NIFTY100"
+  },
+  "BANKNIFTY": {
+    "label": "Nifty Bank",
+    "type": "index",
+    "index_name": "BANKNIFTY"
+  },
+  "IT": {
+    "label": "Nifty IT",
+    "type": "index",
+    "index_name": "IT"
+  },
+  "PHARMA": {
+    "label": "Nifty Pharma",
+    "type": "index",
+    "index_name": "PHARMA"
+  },
+  "AUTO": {
+    "label": "Nifty Auto",
+    "type": "index",
+    "index_name": "AUTO"
+  },
+  "METAL": {
+    "label": "Nifty Metal",
+    "type": "index",
+    "index_name": "METAL"
+  },
+  "NIFTY_NEXT_50": {
+    "label": "Nifty Next 50",
+    "type": "index",
+    "index_name": "NIFTY_NEXT_50"
+  },
+  "NIFTY200": {
+    "label": "Nifty 200",
+    "type": "index",
+    "index_name": "NIFTY200"
+  },
+  "NIFTY500": {
+    "label": "Nifty 500",
+    "type": "index",
+    "index_name": "NIFTY500"
+  },
+  "FMCG": {
+    "label": "Nifty FMCG",
+    "type": "index",
+    "index_name": "FMCG"
+  },
+  "MEDIA": {
+    "label": "Nifty Media",
+    "type": "index",
+    "index_name": "MEDIA"
+  },
+  "REALTY": {
+    "label": "Nifty Realty",
+    "type": "index",
+    "index_name": "REALTY"
+  },
+  "CHEMICALS": {
+    "label": "Nifty Chemicals",
+    "type": "index",
+    "index_name": "CHEMICALS"
+  },
+  "OIL_GAS": {
+    "label": "Nifty Oil & Gas",
+    "type": "index",
+    "index_name": "OIL_GAS"
+  },
+  "FIN_SERVICE": {
+    "label": "Nifty Financial Services",
+    "type": "index",
+    "index_name": "FIN_SERVICE"
+  },
+  "PRIVATE_BANK": {
+    "label": "Nifty Private Bank",
+    "type": "index",
+    "index_name": "PRIVATE_BANK"
+  },
+  "PSU_BANK": {
+    "label": "Nifty PSU Bank",
+    "type": "index",
+    "index_name": "PSU_BANK"
+  },
+  "HEALTHCARE": {
+    "label": "Nifty Healthcare",
+    "type": "index",
+    "index_name": "HEALTHCARE"
+  },
+  "CONSUMER_DURABLES": {
+    "label": "Nifty Consumer Durables",
+    "type": "index",
+    "index_name": "CONSUMER_DURABLES"
+  },
+  "INFRA": {
+    "label": "Nifty Infrastructure",
+    "type": "index",
+    "index_name": "INFRA"
+  }
+}
