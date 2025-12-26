@@ -1,6 +1,6 @@
 import type { Universe, StocksResponse, ChartResponse } from "./types";
 
-const API = "/api";
+const API = "http://127.0.0.1:8000";
 
 export async function getUniverses(): Promise<Universe[]> {
   const r = await fetch(`${API}/universes`, { cache: "no-store" });
