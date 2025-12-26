@@ -11,103 +11,137 @@
     content="Indian stock scanner with universe-based filtering, EOD charts and rule-based scanning for NSE markets."
   />
 
-  <!-- Landing-only styles -->
-  <script type="module" crossorigin src="/assets/index-D75oHQ0F.js"></script>
+  <!-- Landing page styles ONLY -->
+  <script type="module" crossorigin src="/assets/index-CA3ST9GS.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-DIbySFpF.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-LSiUoPWn.css">
 </head>
 
 <body>
 
   <!-- ================= HERO (FULL SCREEN) ================= -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>
-        Smart Stock Scanner
-        <span>for Indian Markets</span>
-      </h1>
 
-      <p>
-        Scan NSE stocks using universe-based groups,
-        clean EOD data and rule-driven logic.
-      </p>
+    <div class="hero-content">
+     <h1 class="brand">
+      Stock Universe
+      <span>India’s Market Intelligence Platform</span>
+    </h1>
+
+    <p class="tagline">
+      Explore NSE stocks through curated universes,  
+      rule-based scanners and clean EOD analytics.
+    </p>
+
 
       <div class="hero-actions">
         <button id="openApp" class="btn primary">Open Scanner</button>
         <button id="learnMore" class="btn secondary">How it works</button>
       </div>
-      <!-- Market status (frontend only) -->
-      <div id="marketStatus" class="market-status">
-       Checking market status…
-      </div>
 
+      <!-- Market status -->
+      <div id="marketStatus" class="market-status">
+        Checking market status…
+      </div>
     </div>
 
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+     <svg
+       class="hero-chart"
+        viewBox="0 0 1200 300"
+        preserveAspectRatio="none"
+    >
+      <path
+        id="chartPath"
+        d="
+          M0 180
+          C120 140, 240 220, 360 160
+          S600 200, 720 140
+          S960 220, 1080 160
+          S1200 180, 1320 150
+        "
+      />
+      </svg>
+    </div>
+
   </section>
 
-  <!-- ================= COMPACT SCREEN SECTION ================= -->
+  <!-- ================= COMPACT SECTION ================= -->
   <section class="compact" id="how">
 
-    <!-- ===== HOW IT WORKS ===== -->
-    <div class="how-it-works">
-      <h2>How It Works</h2>
+    <div class="compact-grid">
 
-      <div class="steps">
-        <div class="step">
-          <span>①</span>
-          <h4>Select Universe</h4>
-          <p>NIFTY, Bank Nifty, sectoral or custom groups.</p>
-        </div>
+      <!-- UNIVERSes -->
 
-        <div class="step">
-          <span>②</span>
-          <h4>Apply Rules</h4>
-          <p>Build logic using indicators and conditions.</p>
-        </div>
 
-        <div class="step">
-          <span>③</span>
-          <h4>Analyze Charts</h4>
-          <p>Review clean candlestick charts and volume.</p>
-        </div>
+  <div class="block">
+  <h3>How it works</h3>
+
+  <div class="steps-row">
+
+    <!-- STEP 1 -->
+    <div class="step-card glass">
+      <div class="icon">
+        📊
       </div>
+      <h4>Select Universe</h4>
+      <p>
+        Choose from NIFTY, Bank Nifty,
+        sectoral indices or custom groups.
+      </p>
+
+      <div class="chart-line"></div>
     </div>
 
-    <!-- ===== SUPPORTED UNIVERSES ===== -->
-    <div class="universes-preview">
-      <h2>Supported Universes</h2>
-
-      <div class="universe-tags">
-        <span>NIFTY 50</span>
-        <span>BANK NIFTY</span>
-        <span>IT</span>
-        <span>PHARMA</span>
-        <span>FMCG</span>
-        <span>METAL</span>
-        <span>FINNIFTY</span>
-        <span>Custom Groups</span>
+    <!-- STEP 2 -->
+    <div class="step-card glass">
+      <div class="icon">
+        ⚙️
       </div>
+      <h4>Apply Rules</h4>
+      <p>
+        Build logic using indicators,
+        conditions and timeframes.
+      </p>
+
+      <div class="chart-line"></div>
     </div>
 
-    <!-- ===== PREVIEW ===== -->
-    <div class="preview">
-      <h2>Clean & Focused Interface</h2>
-      <p>Designed for traders who prefer clarity over clutter.</p>
-
-      <div class="mock-chart">
-        Chart Preview
+    <!-- STEP 3 -->
+    <div class="step-card glass">
+      <div class="icon">
+        📈
       </div>
+      <h4>Analyze Charts</h4>
+      <p>
+        Review clean candlesticks,
+        volume and structure.
+      </p>
+
+      <div class="chart-line"></div>
     </div>
 
+  </div>
+</div>
+
+
+
+      <!-- PREVIEW -->
+      <div class="block">
+        <h3>Interface</h3>
+        <div class="mock-chart">
+          Chart Preview
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- ================= FOOTER ================= -->
   <footer>
-    <span>© 2025 Stock Scanner · No login required · EOD data</span>
+    © 2025 Stock Scanner · No login · NSE EOD data
   </footer>
 
   <!-- Landing logic -->
-
 </body>
 </html>
