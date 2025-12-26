@@ -1,204 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ============================================================
-       BASIC META
-       ============================================================ -->
   <meta charset="UTF-8" />
   <title>Stock Scanner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============================================================
-       STYLESHEET
-       ============================================================ -->
-  <!--
-    Using /src/style.css (Vite / dev server setup)
-    Change path if deploying differently
-  -->
-  <link rel="stylesheet" href="/src/style.css" />
+  <!-- SEO -->
+  <meta
+    name="description"
+    content="Indian stock scanner with universe-based filtering, EOD charts and rule-based scanning for NSE markets."
+  />
+
+  <!-- Landing-only styles -->
+  <link rel="stylesheet" href="/src/landing.css" />
 </head>
 
 <body>
 
-  <!-- ================= MARKET TICKER (FRONTEND ONLY) ================= -->
-   <div class="market-ticker">
-    <div class="tradingview-widget-container">
-     <div class="tradingview-widget-container__widget"></div>
-  </div>
-</div>
+  <!-- ================= HERO (FULL SCREEN) ================= -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Smart Stock Scanner
+        <span>for Indian Markets</span>
+      </h1>
 
+      <p>
+        Scan NSE stocks using universe-based groups,
+        clean EOD data and rule-driven logic.
+      </p>
 
-
-  <!-- ============================================================
-       ROOT APPLICATION CONTAINER
-       ============================================================ -->
-  <!--
-    .app holds the entire UI:
-    - Left sidebar (universes + stocks)
-    - Main content (chart + toolbar)
-  -->
-  <div class="app">
-
-    <!-- ============================================================
-         LEFT SIDEBAR
-         ============================================================ -->
-    <aside class="sidebar">
-
-      <!-- =========================================================
-           SIDEBAR HEADER (TITLE + MANAGE BUTTON)
-           ========================================================= -->
-      <div class="sidebar-header">
-        <h3>Universes</h3>
-
-        <!-- Opens the Manage Universes overlay -->
-        <button
-          id="manageUniverses"
-          class="manage-btn"
-          title="Manage Universes"
-        >
-          ⚙
-        </button>
+      <div class="hero-actions">
+        <button id="openApp" class="btn primary">Open Scanner</button>
+        <button id="learnMore" class="btn secondary">How it works</button>
+      </div>
+      <!-- Market status (frontend only) -->
+      <div id="marketStatus" class="market-status">
+       Checking market status…
       </div>
 
-      <!-- =========================================================
-           STOCK SEARCH (FILTERS STOCK LIST ONLY)
-           ========================================================= -->
-      <input
-        id="stockSearch"
-        class="stock-search"
-        type="text"
-        placeholder="Search stock…"
-      />
+    </div>
 
-      <!-- =========================================================
-           MANAGE UNIVERSes OVERLAY (FLOATING INSIDE SIDEBAR)
-           ========================================================= -->
-      <!--
-        • Hidden by default
-        • Opened via ⚙ button
-        • Allows hide + reorder universes
-      -->
-      <div id="manageOverlay" class="manage-overlay hidden">
+    <div class="hero-bg"></div>
+  </section>
 
-        <!-- Overlay header -->
-        <div class="manage-header">
-          <span>Manage Universes</span>
-          <button
-            id="closeManage"
-            class="close-btn"
-            title="Close"
-          >
-            ✕
-          </button>
+  <!-- ================= COMPACT SCREEN SECTION ================= -->
+  <section class="compact" id="how">
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <div class="how-it-works">
+      <h2>How It Works</h2>
+
+      <div class="steps">
+        <div class="step">
+          <span>①</span>
+          <h4>Select Universe</h4>
+          <p>NIFTY, Bank Nifty, sectoral or custom groups.</p>
         </div>
 
-        <!-- Dynamic list (checkbox + drag handle) -->
-        <div id="manageList" class="manage-list"></div>
-
-        <!-- Overlay action buttons -->
-        <div class="manage-actions">
-          <button id="resetPrefs" class="btn btn-secondary">
-            Reset
-          </button>
-          <button id="applyPrefs" class="btn btn-primary">
-            Apply
-          </button>
+        <div class="step">
+          <span>②</span>
+          <h4>Apply Rules</h4>
+          <p>Build logic using indicators and conditions.</p>
         </div>
 
-      </div>
-
-      <!-- =========================================================
-           SCROLL AREA 1 : UNIVERSES
-           ========================================================= -->
-      <!--
-        • Shows universe groups
-        • Smaller height
-        • Scrollable
-      -->
-      <div id="universesPanel" class="panel universes-panel">
-        <div id="universes"></div>
-      </div>
-
-      <!-- =========================================================
-           SCROLL AREA 2 : STOCKS (SELECTED UNIVERSE)
-           ========================================================= -->
-      <!--
-        • Shows stocks of selected universe
-        • Larger scroll area
-      -->
-      <div class="panel stocks-panel">
-        <div class="panel-title">Stocks</div>
-        <div id="stocks"></div>
-      </div>
-
-    </aside>
-
-    <!-- ============================================================
-         MAIN CONTENT AREA
-         ============================================================ -->
-    <main class="main">
-
-      <!-- =========================================================
-           CHART HEADER TOOLBAR
-           ========================================================= -->
-      <!--
-        Contains:
-        • Selected stock title
-        • Timeframe buttons
-        • Indicator toggles (Volume for now)
-      -->
-      <div class="chart-toolbar">
-
-        <!-- Left side: Stock name + timeframe -->
-        <div class="toolbar-left">
-          <span id="chartTitle">Select a stock</span>
-        </div>
-
-        <!-- Right side: Controls -->
-        <div class="toolbar-right">
-
-          <!-- Timeframe buttons -->
-          <div class="tf">
-            <button data-tf="1D" class="active">1D</button>
-            <button data-tf="1W">1W</button>
-            <button data-tf="1M">1M</button>
-          </div>
-
-          <!-- Indicator toggles -->
-          <div class="indicators">
-            <button
-              id="toggleVolume"
-              class="indicator-btn"
-              title="Toggle Volume"
-            >
-              Volume
-            </button>
-          </div>
-
+        <div class="step">
+          <span>③</span>
+          <h4>Analyze Charts</h4>
+          <p>Review clean candlestick charts and volume.</p>
         </div>
       </div>
+    </div>
 
-      <!-- =========================================================
-           CHART CONTAINER
-           ========================================================= -->
-      <!--
-        Lightweight Charts renders inside this div
-        Height controlled by CSS
-      -->
-      <div id="chart"></div>
+    <!-- ===== SUPPORTED UNIVERSES ===== -->
+    <div class="universes-preview">
+      <h2>Supported Universes</h2>
 
-    </main>
+      <div class="universe-tags">
+        <span>NIFTY 50</span>
+        <span>BANK NIFTY</span>
+        <span>IT</span>
+        <span>PHARMA</span>
+        <span>FMCG</span>
+        <span>METAL</span>
+        <span>FINNIFTY</span>
+        <span>Custom Groups</span>
+      </div>
+    </div>
 
-  </div>
+    <!-- ===== PREVIEW ===== -->
+    <div class="preview">
+      <h2>Clean & Focused Interface</h2>
+      <p>Designed for traders who prefer clarity over clutter.</p>
 
-  <!-- ============================================================
-       FRONTEND ENTRY SCRIPT
-       ============================================================ -->
-  <!--
-    • ES module
-    • main.ts bootstraps entire frontend
-  -->
-  <script type="module" src="/src/main.ts"></script>
+      <div class="mock-chart">
+        Chart Preview
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <span>© 2025 Stock Scanner · No login required · EOD data</span>
+  </footer>
+
+  <!-- Landing logic -->
+  <script type="module" src="/src/landing.ts"></script>
 
 </body>
 </html>
