@@ -1,0 +1,247 @@
+<!-- APP ENTRY -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       BASIC META
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <title>Stock Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       STYLESHEET
+       ============================================================ -->
+  <!--
+    Using /src/style.css (Vite / dev server setup)
+    Change path if deploying differently
+  -->
+  <script type="module" crossorigin src="/assets/app-C2n14_7c.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="/assets/app-DQHexKuB.css">
+</head>
+
+<body>
+
+  <!-- ================= MARKET TICKER (FRONTEND ONLY) ================= -->
+   <div class="market-ticker">
+    <div class="tradingview-widget-container">
+     <div class="tradingview-widget-container__widget"></div>
+  </div>
+</div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Markets today</span></a><span class="trademark"> by TradingView</span></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "NSE:NIFTY",
+      "title": ""
+    },
+    {
+      "proName": "NSE:BANKNIFTY",
+      "title": ""
+    },
+    {
+      "proName": "NSE:CNXIT",
+      "title": ""
+    },
+    {
+      "proName": "NSE:CNXFMCG",
+      "title": ""
+    },
+    {
+      "proName": "NSE:CNXAUTO",
+      "title": ""
+    }
+  ],
+  "colorTheme": "dark",
+  "locale": "en",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": true
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+
+
+  <!-- ============================================================
+       ROOT APPLICATION CONTAINER
+       ============================================================ -->
+  <!--
+    .app holds the entire UI:
+    - Left sidebar (universes + stocks)
+    - Main content (chart + toolbar)
+  -->
+  <div class="app">
+
+    <!-- ============================================================
+         LEFT SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar">
+
+      <!-- =========================================================
+           SIDEBAR HEADER (TITLE + MANAGE BUTTON)
+           ========================================================= -->
+      <div class="sidebar-header">
+        <h3>Universes</h3>
+
+        <!-- Opens the Manage Universes overlay -->
+        <button
+          id="manageUniverses"
+          class="manage-btn"
+          title="Manage Universes"
+        >
+          ⚙
+        </button>
+      </div>
+
+      <!-- =========================================================
+           STOCK SEARCH (FILTERS STOCK LIST ONLY)
+           ========================================================= -->
+      <input
+        id="stockSearch"
+        class="stock-search"
+        type="text"
+        placeholder="Search stock…"
+      />
+
+      <!-- =========================================================
+           MANAGE UNIVERSes OVERLAY (FLOATING INSIDE SIDEBAR)
+           ========================================================= -->
+      <!--
+        • Hidden by default
+        • Opened via ⚙ button
+        • Allows hide + reorder universes
+      -->
+      <div id="manageOverlay" class="manage-overlay hidden">
+
+        <!-- Overlay header -->
+        <div class="manage-header">
+          <span>Manage Universes</span>
+          <button
+            id="closeManage"
+            class="close-btn"
+            title="Close"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Dynamic list (checkbox + drag handle) -->
+        <div id="manageList" class="manage-list"></div>
+
+        <!-- Overlay action buttons -->
+        <div class="manage-actions">
+          <button id="resetPrefs" class="btn btn-secondary">
+            Reset
+          </button>
+          <button id="applyPrefs" class="btn btn-primary">
+            Apply
+          </button>
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+           SCROLL AREA 1 : UNIVERSES
+           ========================================================= -->
+      <!--
+        • Shows universe groups
+        • Smaller height
+        • Scrollable
+      -->
+      <div id="universesPanel" class="panel universes-panel">
+        <div id="universes"></div>
+      </div>
+
+      <!-- =========================================================
+           SCROLL AREA 2 : STOCKS (SELECTED UNIVERSE)
+           ========================================================= -->
+      <!--
+        • Shows stocks of selected universe
+        • Larger scroll area
+      -->
+      <div class="panel stocks-panel">
+        <div class="panel-title">Stocks</div>
+        <div id="stocks"></div>
+      </div>
+      
+
+    </aside>
+
+    
+
+    <!-- ============================================================
+         MAIN CONTENT AREA
+         ============================================================ -->
+    <main class="main">
+
+      <!-- =========================================================
+           CHART HEADER TOOLBAR
+           ========================================================= -->
+      <!--
+        Contains:
+        • Selected stock title
+        • Timeframe buttons
+        • Indicator toggles (Volume for now)
+      -->
+      <div class="chart-toolbar">
+
+        <!-- Left side: Stock name + timeframe -->
+        <div class="toolbar-left">
+          <span id="chartTitle">Select a stock</span>
+        </div>
+
+        <!-- Right side: Controls -->
+        <div class="toolbar-right">
+
+          <!-- Timeframe buttons -->
+          <div class="tf">
+            <button data-tf="1D" class="active">1D</button>
+            <button data-tf="1W">1W</button>
+            <button data-tf="1M">1M</button>
+          </div>
+
+          <!-- Indicator toggles -->
+          <div class="indicators">
+            <button
+              id="toggleVolume"
+              class="indicator-btn"
+              title="Toggle Volume"
+            >
+              Volume
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =========================================================
+           CHART CONTAINER
+           ========================================================= -->
+      <!--
+        Lightweight Charts renders inside this div
+        Height controlled by CSS
+      -->
+      <div id="chart"></div>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       FRONTEND ENTRY SCRIPT
+       ============================================================ -->
+  <!--
+    • ES module
+    • main.ts bootstraps entire frontend
+  -->
+
+</body>
+</html>
